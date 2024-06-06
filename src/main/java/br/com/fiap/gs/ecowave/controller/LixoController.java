@@ -20,4 +20,14 @@ public class LixoController {
     public LixoDTO createLixo(@RequestBody LixoDTO lixoDTO) {
         return lixoService.saveLixo(lixoDTO);
     }
+
+    @PutMapping("/{id}")
+    public LixoDTO updateLixo(@PathVariable Long id, @RequestBody LixoDTO lixoDTO) {
+        return lixoService.updateLixo(id, lixoDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteLixo(@PathVariable Long id) {
+        lixoService.deleteLixo(id);
+    }
 }

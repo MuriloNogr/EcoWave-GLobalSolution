@@ -12,7 +12,8 @@ public class EspecieService {
     private EspecieRepository especieRepository;
 
     public EspecieDTO getEspecieById(Long id) {
-        Especie especie = especieRepository.findById(id).orElseThrow(() -> new RuntimeException("Espécie não encontrada"));
+        Especie especie = especieRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Espécie não encontrada"));
         return convertToDTO(especie);
     }
 
@@ -20,6 +21,22 @@ public class EspecieService {
         Especie especie = convertToEntity(especieDTO);
         especie = especieRepository.save(especie);
         return convertToDTO(especie);
+    }
+
+    public EspecieDTO updateEspecie(Long id, EspecieDTO especieDTO) {
+        Especie especie = especieRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Espécie não encontrada"));
+        especie.setNomeComum(especieDTO.getNomeComum());
+        especie.setNomeCientifico(especieDTO.getNomeCientifico());
+        especie.setHabitat(especieDTO.getHabitat());
+        especie = especieRepository.save(especie);
+        return convertToDTO(especie);
+    }
+
+    public void deleteEspecie(Long id) {
+        Especie especie = especieRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Espécie não encontrada"));
+        especieRepository.delete(especie);
     }
 
     private EspecieDTO convertToDTO(Especie especie) {
@@ -33,7 +50,6 @@ public class EspecieService {
 
     private Especie convertToEntity(EspecieDTO dto) {
         Especie especie = new Especie();
-        especie.setId(dto.getId());
         especie.setNomeComum(dto.getNomeComum());
         especie.setNomeCientifico(dto.getNomeCientifico());
         especie.setHabitat(dto.getHabitat());

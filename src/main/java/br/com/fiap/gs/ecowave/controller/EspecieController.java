@@ -20,4 +20,14 @@ public class EspecieController {
     public EspecieDTO createEspecie(@RequestBody EspecieDTO especieDTO) {
         return especieService.saveEspecie(especieDTO);
     }
+
+    @PutMapping("/{id}")
+    public EspecieDTO updateEspecie(@PathVariable Long id, @RequestBody EspecieDTO especieDTO) {
+        return especieService.updateEspecie(id, especieDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteEspecie(@PathVariable Long id) {
+        especieService.deleteEspecie(id);
+    }
 }
