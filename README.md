@@ -3,6 +3,8 @@
 EcoWave
 O EcoWave é um projeto Java Maven Spring Boot que tem como objetivo principal treinar um drone submerso para detectar lixo nos mares e oceanos. O projeto utiliza diversas tecnologias e funcionalidades para alcançar esse objetivo.
 
+Link do Pitch: https://youtu.be/5DxI-h6ar00?si=uqMlWPmKE_GGRfuo
+
 Tecnologias Utilizadas
 Java
 Maven
