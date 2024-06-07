@@ -6,10 +6,22 @@ import br.com.fiap.gs.ecowave.repository.LixoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class LixoService {
     @Autowired
     private LixoRepository lixoRepository;
+
+    public List<LixoDTO> getAllLixos() {
+        List<Lixo> lixos = lixoRepository.findAll();
+        return lixos.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
+
 
     public LixoDTO getLixoById(Long id) {
         Lixo lixo = lixoRepository.findById(id).orElseThrow(() -> new RuntimeException("Tipo de lixo não encontrado"));

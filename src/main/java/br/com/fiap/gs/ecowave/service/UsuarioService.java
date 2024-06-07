@@ -6,10 +6,20 @@ import br.com.fiap.gs.ecowave.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    public List<UsuarioDTO> getAllUsuarios() {
+        List<Usuario> usuarios = usuarioRepository.findAll();
+        return usuarios.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
 
     public UsuarioDTO getUsuarioById(Long id) {
         Usuario usuario = usuarioRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));

@@ -6,10 +6,21 @@ import br.com.fiap.gs.ecowave.repository.EspecieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class EspecieService {
     @Autowired
     private EspecieRepository especieRepository;
+
+    public List<EspecieDTO> getAllSpecies() {
+        List<Especie> especies = especieRepository.findAll();
+        return especies.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
 
     public EspecieDTO getEspecieById(Long id) {
         Especie especie = especieRepository.findById(id)
