@@ -5,6 +5,12 @@ O EcoWave é um projeto Java Maven Spring Boot que tem como objetivo principal t
 
 Link do Pitch: https://youtu.be/5DxI-h6ar00?si=uqMlWPmKE_GGRfuo
 
+Link do video da Aplicação: https://youtu.be/jQFCIna_u5M?si=MTea7TRhZ_btsSeh
+
+Link da API: https://rocky-depths-88705-d697bab49e8f.herokuapp.com
+
+Link do FrontEnd: https://github.com/MuriloNogr/EcoWave-GS-MAD
+
 Tecnologias Utilizadas
 Java
 Maven
